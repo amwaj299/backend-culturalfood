@@ -6,9 +6,29 @@ from rest_framework.response import Response
 from .models import Dish
 from .serializers import DishSerializer
 
-# class DisheIndex(APIView):
-#     def get(self, request):
-#         return Response({'message': 'This is the Dishes Index'})
+
+class DishesIndex(APIView):
+    serializer_class = DishSerializer
+
+    def get(self, request):
+        try:
+            queryset = Dish.objects.all()
+            serializer = self.serializer_class(queryset, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as err:
+            return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class DishDetail(APIView):
+    serializer_class = DishSerializer
+
+    def get(self, request, dish_id):
+        try:
+            queryset = Dish.objects.get(id=dish_id)
+            dish = DishSerializer(queryset)
+            return Response(dish.data, status=status.HTTP_200_OK)
+        except Exception as err:
+            return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class Home(APIView):
     def get(self, request):
@@ -24,4 +44,6 @@ class Dishes(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as err:
             return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 
