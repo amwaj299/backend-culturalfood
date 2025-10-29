@@ -26,12 +26,20 @@ SECRET_KEY = 'django-insecure-z=r-u9e&k$dsjqxn*t!&uzy101(q%^vi=xet1!3m3$*rjdib!_
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS=False
+CORS_ALLOW_HEADERS = '*'
+CORS_ALLOWED_ORIGINS=[
+    "http://localhost:5173"
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # add 'corsheaders' here
     'main_app',
+    'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +49,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # ADD YOUR NEW MIDDLEWARE BELOW..
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
