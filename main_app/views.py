@@ -77,6 +77,22 @@ class LocationDishes(APIView):
         except Exception as err:
             return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class FilteredDishes(APIView):
+    serializer_class = DishSerializer
+
+    def get(self, request, tag_name):
+        try:
+            
+            tag = get_object_or_404(Tag, name=tag_name)
+
+            queryset = Dish.objects.filter(tags=tag)
+            serializer = self.serializer_class(queryset, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        except Exception as err:
+            return Response({'error': str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 
 class LocationsIndex(generics.ListCreateAPIView):
     queryset = Location.objects.all()
