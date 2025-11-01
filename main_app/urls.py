@@ -1,9 +1,15 @@
 from django.urls import path 
-from .views import Home, Dishes , DishDetail
+from .views import Home, DishesIndex , DishDetail  , LocationDishes , LocationsIndex
 
 urlpatterns = [
 
     path('', Home.as_view(), name='home'),
-    path('dishes/', Dishes.as_view(), name='dish-index'),
-    path('dishes/<int:dish_id>/', views.DishDetail.as_view(), name='dish-detail'),
+    path('dishes/', DishesIndex.as_view(), name='dish-index'),
+    path('dishes/<int:dish_id>/', DishDetail.as_view(), name='dish-detail'),
+    path('locations/<int:location_id>/dishes/', LocationDishes.as_view(), name='location-dishes'),
+    path('locations/', LocationsIndex.as_view(), name='location-index'),
+
+ 
 ]
+
+

@@ -1,7 +1,7 @@
 from django.contrib import admin 
-from .models import Dish, Location
+from .models import Dish
 
 # Register your models here.
 
 admin.site.register(Dish)
-admin.site.register(Location)
+# admin.site.register(Location)
