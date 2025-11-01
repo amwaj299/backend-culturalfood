@@ -1,5 +1,5 @@
 from django.urls import path 
-from .views import Home, DishesIndex , DishDetail  , LocationDishes , LocationsIndex
+from .views import Home, DishesIndex , DishDetail  , LocationDishes , LocationsIndex ,TagListCreate
 
 urlpatterns = [
 
@@ -8,7 +8,7 @@ urlpatterns = [
     path('dishes/<int:dish_id>/', DishDetail.as_view(), name='dish-detail'),
     path('locations/<int:location_id>/dishes/', LocationDishes.as_view(), name='location-dishes'),
     path('locations/', LocationsIndex.as_view(), name='location-index'),
-
+    path('tags/',TagListCreate.as_view(), name='tag-list-create'),
  
 ]
 

@@ -12,15 +12,23 @@ class Location(models.Model):
         return self.name
 
 
-class Dish(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(max_length=250)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    origin = models.ForeignKey(Location, on_delete=models.CASCADE)
-    photo = models.URLField(blank=True)
+class Tag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-      return self.name
+        return self.name
+
+
+class Dish(models.Model):
+    name = models.CharField(max_length=100)
+    origin = models.ForeignKey(Location, on_delete=models.CASCADE)
+    description = models.TextField(max_length=250)
+    photo = models.URLField(blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, related_name='dishes', blank=True)
+
+    def __str__(self):
+        return self.name
 
 
     # def create(self, validated_data):

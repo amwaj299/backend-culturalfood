@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Dish , Location
+from .models import Dish , Location , Tag
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -7,6 +7,12 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = "__all__"
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['id', 'name']
 
 
 

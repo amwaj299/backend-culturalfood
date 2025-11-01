@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from rest_framework import generics,status
+from rest_framework import generics,status, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Dish , Location
-from .serializers import DishSerializer , LocationSerializer
+from .models import Dish , Location , Tag
+from .serializers import DishSerializer , LocationSerializer , TagSerializer
+
+
 
 
 
@@ -68,6 +70,14 @@ class LocationDishes(APIView):
 class LocationsIndex(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+
+
+class TagListCreate(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
 
 
 
