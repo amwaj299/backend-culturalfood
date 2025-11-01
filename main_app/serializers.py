@@ -8,13 +8,10 @@ class LocationSerializer(serializers.ModelSerializer):
         model = Location
         fields = "__all__"
 
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ['id', 'name']
-
-
 
 class DishSerializer(serializers.ModelSerializer):
     origin = LocationSerializer(read_only=True)
@@ -23,7 +20,9 @@ class DishSerializer(serializers.ModelSerializer):
         source='origin',
         write_only=True
     )
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Dish
-        fields = ['id', 'name', 'description', 'photo', 'origin', 'origin_id']
+        fields = ['id', 'name', 'description', 'photo', 'origin', 'origin_id', 'user', 'tags']
+
