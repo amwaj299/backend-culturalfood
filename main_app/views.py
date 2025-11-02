@@ -57,6 +57,12 @@ class DishDetail(APIView):
 
         print("Serializer Errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, dish_id):
+        dish = get_object_or_404(Dish, id=dish_id)
+        dish.delete()
+        return Response({'success':True},status=status.HTTP_200_OK)
+
 
 
 class LocationDishes(APIView):
