@@ -24,10 +24,13 @@ class DishesIndex(generics.ListCreateAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
+        print(request.data)
+        print("create dish check 28")
         serializer = self.serializer_class(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save(user_id=request.user.id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print("Serializer Errors:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -38,6 +41,7 @@ class DishDetail(APIView):
     def get(self, request, dish_id):
         dish = get_object_or_404(Dish, id=dish_id)
         serializer = self.serializer_class(dish)
+        print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, dish_id):
@@ -103,6 +107,28 @@ class TagListCreate(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
+
+class TagDetail(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = TagSerializer
+
+    def get(self, request, tag_id):
+        tag = get_object_or_404(Tag, id=tag_id)
+        serializer = self.serializer_class(tag, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, tag_id):
+        tag = get_object_or_404(Tag, id=tag_id)
+        serializer = self.serializer_class(tag, data=request.data, partial=False, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, tag_id):
+        tag = get_object_or_404(Tag, id=tag_id)
+        tag.delete()
+        return Response({'success': True}, status=status.HTTP_200_OK)
 
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()

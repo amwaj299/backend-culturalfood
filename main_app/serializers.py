@@ -40,8 +40,9 @@ class DishSerializer(serializers.ModelSerializer):
     )
     user = serializers.PrimaryKeyRelatedField(read_only=True)  
     tags = TagSerializer(many=True, read_only=True)
+    tags_ids = serializers.PrimaryKeyRelatedField(queryset=Tag.objects.all(), many=True, write_only=True, source='tags')
 
     class Meta:
         model = Dish
-        fields = ['id', 'name', 'description', 'photo', 'origin', 'origin_id', 'user', 'tags']
+        fields = ['id', 'name', 'description', 'photo', 'origin', 'origin_id', 'user', 'tags', 'tags_ids']
 
