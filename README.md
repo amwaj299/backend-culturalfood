@@ -31,7 +31,7 @@ The backend handles:
 
 ## Entity Relationship Diagram (ERD)
 
-![ERD Diagram](./src/assets/images/Untitled%20(1).jpg)
+![ERD Diagram](../frontend-culturalfood/src/assets/images/Untitled%20(1).jpg)
 
 
 ##  Models & Relationships
