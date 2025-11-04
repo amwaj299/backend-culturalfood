@@ -28,6 +28,12 @@ The backend handles:
 
 ---
 
+
+## Entity Relationship Diagram (ERD)
+
+![ERD Diagram](./src/assets/images/Untitled%20(1).jpg)
+
+
 ##  Models & Relationships
 
 | Model | Fields | Relationships |
@@ -70,6 +76,14 @@ The backend handles:
 
 <!-- git clone <backend-repo-url>
 cd backend-finelproject -->
+
+### Installation & Setup
+cd frontend-culturalfood
+npm install
+npm run dev
+docker compose up -d
+docker compose up --build
+
 
 ## Links
 **Backend Repository:** [https://github.com/amwaj299/backend-culturalfood](https://github.com/amwaj299/backend-culturalfood)
