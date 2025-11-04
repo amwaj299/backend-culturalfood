@@ -71,6 +71,12 @@ The backend handles:
 <!-- git clone <backend-repo-url>
 cd backend-finelproject -->
 
+## Links
+**Backend Repository:** [https://github.com/amwaj299/backend-culturalfood](https://github.com/amwaj299/backend-culturalfood)
+**API URL:** [http://localhost:8000/]
+**Fontend Repository** [https://github.com/amwaj299/frontend-culturalfood]
+
+
 
 ## Future Improvements / Icebox Features
 
