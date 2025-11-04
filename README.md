@@ -50,29 +50,47 @@ The backend handles:
 
 ---
 
+## RESTful Routing Table — Backend (Django REST Framework)
 
-| Method | Endpoint | Description |
-|--------|-----------|-------------|
-| GET | `//` | Welcome message |
-| GET | `/dishes/` | List all dishes for logged-in user |
-| POST | `/dishes/` | Create a new dish |
-| GET | `/dishes/:dish_id/` | Retrieve details for a specific dish |
-| PUT | `/dishes/:dish_id/` | Update a dish |
-| DELETE | `/dishes/:dish_id/` | Delete a dish |
-| GET | `/locations/` | List all locations |
-| POST | `/locations/` | Create a location |
-| GET | `/locations/:location_id/dishes/` | Filter dishes by location |
-| GET | `/tags/` | List all tags |
-| POST | `/tags/` | Create a tag |
-| GET | `/tags/:tag_id/` | Retrieve a specific tag |
-| PUT | `/tags/:tag_id/` | Update a tag |
-| DELETE | `/tags/:tag_id/` | Delete a tag |
-| GET | `/tags/:tag_name/dishes/` | Filter dishes by tag |
-| POST | `/user/signup/` | Register a new user |
-| POST | `/user/login/` | Login user and return JWT token |
-| GET | `/user/verify/` | Verify JWT token and return user data |
+| HTTP Method | Endpoint | Description |
+|--------------|-----------|--------------|
+| **GET** | `//` | Welcome message |
+| **GET** | `/dishes/` | List all dishes for logged-in user |
+| **POST** | `/dishes/` | Create a new dish |
+| **GET** | `/dishes/:dish_id/` | Retrieve details for a specific dish |
+| **PUT** | `/dishes/:dish_id/` | Update a dish |
+| **DELETE** | `/dishes/:dish_id/` | Delete a dish |
+| **GET** | `/locations/` | List all locations |
+| **POST** | `/locations/` | Create a location |
+| **GET** | `/locations/:location_id/dishes/` | Filter dishes by location |
+| **GET** | `/tags/` | List all tags |
+| **POST** | `/tags/` | Create a tag |
+| **GET** | `/tags/:tag_id/` | Retrieve a specific tag |
+| **PUT** | `/tags/:tag_id/` | Update a tag |
+| **DELETE** | `/tags/:tag_id/` | Delete a tag |
+| **GET** | `/tags/:tag_name/dishes/` | Filter dishes by tag |
+| **POST** | `/user/signup/` | Register a new user |
+| **POST** | `/user/login/` | Login user and return JWT token |
+| **GET** | `/user/verify/` | Verify JWT token and return user data |
+
 
 ---
+
+## RESTful Routing Table — Frontend (React)
+
+| Route | Component | Description |
+|--------|------------|-------------|
+| `/` | **HomePage** | Main page with introduction and list of dishes |
+| `/about` | **AboutPage** | About the project |
+| `/login` | **LoginPage** | Login form for existing users |
+| `/signup` | **SignupPage** | Signup form for new users |
+| `/dishes` | **DishIndexPage** | Show all dishes |
+| `/dishes/:id` | **DishDetailPage** | Show details for a specific dish |
+| `/add-dish` | **AddDishPage** | Add a new dish |
+| `/dishes/filter/:tag` | **FilteredDishesPage** | Show dishes filtered by selected tag |
+| `/edit-dish/:id` | **EditDishPage** | Edit a dish |
+| `/delete-dish/:id` | **DeleteDishPage** | Delete a dish |
+
 
 <!-- git clone <backend-repo-url>
 cd backend-finelproject -->
@@ -86,9 +104,9 @@ docker compose up --build
 
 
 ## Links
-**Backend Repository:** [https://github.com/amwaj299/backend-culturalfood](https://github.com/amwaj299/backend-culturalfood)
+**Frontend Repositories git clone https://github.com/amwaj299/frontend-culturalfood
 **API URL:** [http://localhost:8000/]
-**Fontend Repository** [https://github.com/amwaj299/frontend-culturalfood]
+
 
 
 
