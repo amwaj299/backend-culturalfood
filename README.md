@@ -28,6 +28,18 @@ The backend handles:
 
 ---
 
+## User Stories
+
+1. I can sign up and create an account.  
+2. I can log in to my account.  
+3. I can add a new dish with a name, photo, description, and location.  
+4. I can view all dishes shared by users.  
+5. I can view detailed information about a dish, including its tags and origin.  
+6. I can edit or delete my own dishes.  
+7. I can create, edit, and delete tags to describe dishes.  
+8. I can filter dishes by tags such as spicy, sweet, or traditional.  
+9. I can view dishes even if I’m not logged in.
+
 
 ## Entity Relationship Diagram (ERD)
 
@@ -96,9 +108,6 @@ The backend handles:
 cd backend-finelproject -->
 
 ### Installation & Setup
-cd frontend-culturalfood
-npm install
-npm run dev
 docker compose up -d
 docker compose up --build
 
